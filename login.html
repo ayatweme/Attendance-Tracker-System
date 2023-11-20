@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">
+      <link rel="stylesheet" href="assets/css/login.css">
+      <title>Login Form</title>
+   </head>
+   <body>
+      <div class="login">
+         <img src="assets/img/login-bg.jpg" alt="background image" class="login__bg">
+         <form action="" class="login__form" onsubmit="return validateForm()">
+            <h1 class="login__title">Login</h1>
+            <div class="login__inputs">
+                <div class="login__box">
+                    <input type="email" placeholder="email" class="login__input" id="emailField">
+                    <i class="ri-mail-fill"></i>
+                </div>
+                <p id="emailError"></p> 
+                <!-- Email error message placeholder -->
+                <div class="login__box">
+                    <input type="password" placeholder="Password" class="login__input" id="passwordField">
+                    <i class="ri-eye-off-line" id="passwordLogo"></i>
+                    
+                </div>
+                <p id="passwordError"></p> 
+                <!-- Password error message placeholder -->
+            </div>
+            <button type="submit" class="login__button">Login</button>
+        </form>     
+      </div>
+   </body>
+   <script src="login.js"></script>
+   <script src="Navigator.js"></script>
+</html>
