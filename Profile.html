@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        * {
+    box-sizing: border-box;
+
+    }
+        body {
+        margin: 0;
+        padding: 0;
+        background-image: url('assets/img/login-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Ensures the background doesn't scroll */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 100vh;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #profileCard,#editCard {
+            max-width: 450px;
+            padding: 20px;
+            border: 2px solid hsla(0, 0%, 100%, .7);
+            border-radius: 1rem;
+            backdrop-filter: blur(16px);
+            
+        }
+        .row1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #editCard {
+        
+            display: none;
+        }
+        #profileCard img ,#editCard img{
+            width: 50%;
+            border-radius: 20%;
+            /* border-radius: 50%; */
+        }
+        #editButton, .FormGroup button {
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        #editForm{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .FormGroup{
+            margin-top: 20px;
+            width: 100%;
+        }
+        .FormGroup input{
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid white;
+            background: transparent;
+            color : white;
+            font-size: 15px;
+        }
+
+        .FormGroup input:focus {
+            border: none;
+            border-bottom: 1px solid skyblue;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            #profileCard, #editCard {
+                max-width: 100%;
+            }
+        }
+    </style>
+ 
+</head>
+<body>
+    <div class="card-container">
+        <div id="profileCard">
+            <div class="row1">
+                <img id="profileImage" alt="Profile Image" src="assets\img\default-profile-image.jpg">    
+            </div>
+            <div class="row2">
+                <p><strong>First Name:</strong> <span id="profileFirstName"></span></p>
+                <p><strong>Last Name:</strong> <span id="profileLastName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Password:</strong> <span id="profilePassword"></span></p>
+                <button id="editButton" onclick="showEditCard()">Edit User</button>
+            </div>
+        </div>
+        <div id="editCard">
+            <h2>Edit User</h2>
+            <div class="row1">
+                <img id="profileImage2" alt="Profile Image" src="assets\img\default-profile-image.jpg">    
+            </div>
+            <form id="editForm">
+                <div class="FormGroup">
+                    <input type="text" id="editFirstName" name="editName" placeholder="First Name" required>
+                </div>
+                
+                <div class="FormGroup">
+                    <input type="text" id="editLastName" name="editName" placeholder="Last Name" required>
+                </div>
+                <div class="FormGroup">
+                    <input type="email" id="editEmail" name="editEmail" placeholder="Email" required>
+                </div>
+                <div class="FormGroup">
+                    <input type="password" id="editPassword" name="editPassword" placeholder="Password" required>
+                </div>
+                <div class="FormGroup">
+                    <input type="text" id="editImage" name="editImage" placeholder="Profile Image URL">
+                </div>
+                <div class="FormGroup">
+                    <button type="button" onclick="saveChanges()">Save Changes</button>
+                    <button type="button" onclick="hideEditCard()">Cancel</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <script src="Profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>
