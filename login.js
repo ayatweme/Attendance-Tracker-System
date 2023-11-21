@@ -16,24 +16,14 @@ document.getElementById('passwordLogo').addEventListener('click', function () {
   }
 });
 
-function validateForm() {
-  var email = document.getElementById('emailField').value;
-  var password = document.getElementById('passwordField').value;
-  var emailRegex = /^\S+@\S+\.\S+$/;
-  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-  var isValid = true;
+function handleLogin(event, location) {
+  event.preventDefault(); // Prevent default form submission
+  console.log('Navigating to:', location);
+  const body = document.body;
+  body.classList.add('fade-out');
 
-  if (!emailRegex.test(email)) {
-      document.getElementById('emailError').innerHTML = "Invalid email address.";
-      isValid = false;
-  }
-
-  if (!passwordRegex.test(password)) {
-      document.getElementById('passwordError').innerHTML = "Invalid password. It must contain at least 8 characters, including uppercase, lowercase letters, and numbers.";
-      isValid = false;
-  }
-
-  // navigator handler missing
-
-  return isValid;
+  setTimeout(() => {
+    console.log('Timeout reached. Navigating now.');
+    window.location.href = location + ".html";
+  }, 400);
 }

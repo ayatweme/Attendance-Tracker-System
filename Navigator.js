@@ -1,7 +1,7 @@
 function Navigate(location) {
     const body = document.body;
     body.classList.add('fade-out');
-  
+
     setTimeout(() => {
       window.location.href = location + ".html";
     }, 400);
@@ -11,9 +11,11 @@ function Navigate(location) {
   style.innerHTML = `
   .fade-out {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Adjust the duration and timing function */
+    transition: opacity 0.5s ease-in-out;
   }
   `;
   
   document.head.appendChild(style);
+  console.log('Navigated');
+
   
