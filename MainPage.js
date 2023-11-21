@@ -60,3 +60,59 @@ function toggleNav() {
     var sideNav = document.querySelector(".side-nav");
     sideNav.classList.toggle("show-links");
 }
+// Assuming you have variables to track the solved tasks count
+let solvedTasksCount = 0;
+
+function incrementSolvedTasks() {
+    // Your logic to increment the tasks count
+    solvedTasksCount++;
+    updateSolvedTasksDisplay();
+}
+
+function decrementSolvedTasks() {
+    // Your logic to decrement the tasks count, ensuring it doesn't go below 0
+    if (solvedTasksCount > 0) {
+        solvedTasksCount--;
+        updateSolvedTasksDisplay();
+    }
+}
+
+function updateSolvedTasksDisplay() {
+    // Update the content of the span with the current count
+    document.getElementById('solvedTasksDisplay').textContent = solvedTasksCount;
+}
+let absenceCount = 0;
+
+function incrementAbsenceCount() {
+    absenceCount++;
+    updateAbsenceDisplay();
+}
+
+function decrementAbsenceCount() {
+    if (absenceCount > 0) {
+        absenceCount--;
+        updateAbsenceDisplay();
+    }
+}
+
+function updateAbsenceDisplay() {
+    document.getElementById('absenceDisplay').textContent = absenceCount;
+}
+function deleteTrainee() {
+    // Logic to get the trainee data from local storage (replace with your actual key)
+    let traineeData = JSON.parse(localStorage.getItem('traineeData')) || [];
+
+    // Logic to remove the trainee data (you may use a specific ID or other criteria)
+    // For example, removing the last item in the array
+    traineeData.pop();
+
+    // Update the local storage with the modified data
+    localStorage.setItem('traineeData', JSON.stringify(traineeData));
+
+    // Refresh or update the UI as needed
+    // For example, you may need to re-render the table with the updated data
+    // ...
+
+    // Log a message or perform any other actions after deletion
+    console.log('Trainee deleted');
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/MainPage.css">
+<!-- Example: Include Font Awesome from BootstrapCDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+        <title>Trainee</title>
+</head>
+
+<body>
+    <div class="header">
+        <img src="assets/img/avatar.jpg" alt="" class="avatar">
+        <p>User Name</p>
+    </div>
+    <button class="sandwich-menu" onclick="toggleNav()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    <nav class="side-nav">
+        <a onclick="console.log('hi')">Home</a>
+        <a href="trainee.html">Trainees</a>
+        <a>Register Trainers</a>
+        <a>Profile</a>
+        <a>Logout</a>
+    </nav>
+    <main>
+        <section class="slide">
+            <div class="card">
+            <div class="img-list" id="img-list">
+                <img src="assets/img/login-bg.jpg" width="100%" alt="">
+                <img src="assets/img/login-bg.jpg" width="100%" alt="">
+                <img src="assets/img/login-bg.jpg" width="100%" alt="">
+            </div>
+            <div class="content">
+                <h3>Trainee List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Solved Tasks</th>
+                            <th>Total Tasks</th>
+                            <th>Number of Absence</th>
+                            <th>Delete </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>
+                                <button class="btn" onclick="decrementSolvedTasks()">-</button>
+                                <span id="solvedTasksDisplay">0</span>
+                                <button class="btn" onclick="incrementSolvedTasks()">+</button>
+                            </td>                            <td>10</td>
+                            <td id="absenceCount">
+                                <button class="btn" onclick="decrementAbsenceCount()">-</button>
+                                <span id="absenceDisplay">0</span>
+                                <button class="btn" onclick="incrementAbsenceCount()">+</button>
+                            </td>
+                            <td>
+                                    <i class="fas fa-trash delete-btn trash-icon" onclick="deleteTrainee()" ></i>
+                            </td>
+                        </tr>
+                        <!-- Add more rows for additional trainees if needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        </section>
+    </main>
+</body>
+<script src="MainPage.js"></script>
+
+</html>
