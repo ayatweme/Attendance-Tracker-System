@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('Intro-bg.jpg');
+            color: white;
+        }
+
+        #todoContainer {
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: transparent;
+            padding: 20px;
+            border: 2px solid hsla(0, 0%, 100%, .7);
+            border-radius: 1rem;
+            backdrop-filter: blur(16px);
+        }
+
+        #todoList {
+            list-style-type: none;
+            padding: 0;
+            overflow : auto;
+        }
+
+        .todoItem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .todoItem input {
+            margin-right: 10px;
+        }
+
+        #addTodo {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+        }
+        button{
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 4px;
+        }
+       
+        textarea{
+            font-size: 15px;
+            background-image: url('https://img.freepik.com/free-photo/paper-textures-background_74190-266.jpg?w=740&t=st=1700607368~exp=1700607968~hmac=8d255fe5fddbf286ccfcec46c5223c2178c893c4d516142e414ea07f2270f8a5');
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="todoContainer">
+    <h2>Note</h2>
+    <div>
+        <textarea id="newTodo" placeholder="New Note" style="height: 100px; width: 100%;word-wrap: break-word; resize: none;"></textarea>
+        <button onclick="addTodo()" id="addTodo">Add Note</button>
+    </div>
+    <ul id="todoList"></ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTasks();
+    });
+
+    function loadTasks() {
+        const todoList = document.getElementById('todoList');
+        todoList.innerHTML = ''; 
+
+        if (localStorage.getItem('tasks')) {
+            const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+           
+            tasks.forEach(function (taskText) {
+                const newTodoItem = createTodoItem(taskText);
+                todoList.appendChild(newTodoItem);
+            });
+        }
+    }
+
+    function addTodo() {
+        const newTodoInput = document.getElementById('newTodo');
+        const todoList = document.getElementById('todoList');
+
+        if (newTodoInput.value.trim() !== '') {
+            const taskText = newTodoInput.value.trim();
+            const newTodoItem = createTodoItem(taskText);
+
+            todoList.appendChild(newTodoItem);
+
+            saveTasks();
+
+            newTodoInput.value = '';
+        }
+    }
+
+    function createTodoItem(taskText) {
+        const newTodoItem = document.createElement('li');
+        newTodoItem.className = 'todoItem';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+
+        const todoText = document.createElement('span');
+        todoText.innerText = taskText;
+        todoText.style.overflow = 'auto';
+     
+
+        const removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.onclick = function () {
+            newTodoItem.remove();
+            saveTasks();
+        };
+
+
+        newTodoItem.appendChild(checkbox);
+        newTodoItem.appendChild(todoText);
+        newTodoItem.appendChild(removeButton);
+
+        return newTodoItem;
+    }
+
+    function saveTasks() {
+        const todoList = document.getElementById('todoList');
+        const tasks = [];
+
+        todoList.childNodes.forEach(function (item) {
+            if (item.nodeType === 1) { 
+                const taskText = item.querySelector('span').innerText;
+                tasks.push(taskText);
+            }
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+</script>
+
+</body>
+</html>
