@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            background-image: url('assets/img/login-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* make image fit on smaller screen sizes */
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/MainPage.css">
     <link rel="stylesheet" href="assets/css/navBar.css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-    rel="stylesheet"
-  />
+    <link rel="stylesheet" href="assets/css/trainers.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -190,26 +195,32 @@
           </li>
         </ul>
       </nav>
-</header>
-    <section class="slide">
-        <div class="img-list" id="img-list">
-            <img src="assets/img/login-bg.jpg" width="100%" alt="">
-            <img src="assets/img/Intro-bg.jpg" width="100%" alt="">
-            <img src="assets/img/slide.jpg" width="100%" alt="">
-        </div>
-        <div class="content">
-            <div class="text-content">
-                <h2></h2>
-                <p></p>
-            </div>
-        </div>
-        <div class="btn-section">
-            <div class="img-btn" onclick="slideImg(0)"></div>
-            <div class="img-btn" onclick="slideImg(1)"></div>
-            <div class="img-btn" onclick="slideImg(2)"></div>
-        </div>
-    </section>
+  </header>
+  <div class="container">
+    <table id="trainersTable">
+      <thead>
+        <tr>
+          <th>Trainer Name</th>
+          <th>Trainer Email</th>
+          <th>Trainer Password</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <br><br>
+    <button id="toggleFormBtn" class="btn">Add Trainer</button>
+    <div id="trainerForm" style="display: none;padding-top: 20px;">
+      <input type="text" id="nameInput" placeholder="Name">
+      <input type="email" id="emailInput" placeholder="Email">
+      <input type="password" id="passwordInput" placeholder="Password">
+      <br><br>
+      <button id="createTrainerBtn" class="btn">Create</button>
+    </div>
+  </div>
+  
 </body>
-<script src="MainPage.js"></script>
 <script src="Navigator.js"></script>
+<script src="trainers.js"></script>
 </html>

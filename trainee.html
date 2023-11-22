@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            background-image: url('assets/img/login-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* make image fit on smaller screen sizes */
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/MainPage.css">
     <link rel="stylesheet" href="assets/css/navBar.css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-    rel="stylesheet"
-  />
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/trainee.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+    <title>Trainees</title>
 </head>
 <body>
   <header>
@@ -191,25 +196,31 @@
         </ul>
       </nav>
 </header>
-    <section class="slide">
-        <div class="img-list" id="img-list">
-            <img src="assets/img/login-bg.jpg" width="100%" alt="">
-            <img src="assets/img/Intro-bg.jpg" width="100%" alt="">
-            <img src="assets/img/slide.jpg" width="100%" alt="">
-        </div>
-        <div class="content">
-            <div class="text-content">
-                <h2></h2>
-                <p></p>
-            </div>
-        </div>
-        <div class="btn-section">
-            <div class="img-btn" onclick="slideImg(0)"></div>
-            <div class="img-btn" onclick="slideImg(1)"></div>
-            <div class="img-btn" onclick="slideImg(2)"></div>
-        </div>
-    </section>
+
+    <div class="table-container">
+      <table class="trainee-table">
+        <thead>
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Solved Tasks</th>
+              <th>Total Tasks</th>
+              <th>Number of Absence</th>
+              <th>Delete </th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      </table>
+    </div>
+
+    <div class="center-container">
+      <div class="button-container">
+        <button id="addStudentBtn" class="btn1">Add Student</button>
+      </div>
+      <div id="addStudentContainer"></div>
+    </div>
 </body>
-<script src="MainPage.js"></script>
 <script src="Navigator.js"></script>
+<script src="trainee.js"></script>
 </html>

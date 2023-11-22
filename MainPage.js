@@ -55,8 +55,3 @@ window.addEventListener('load', () => {
     document.querySelector('.text-content h2').innerText = textContents[currentIndex].title;
     document.querySelector('.text-content p').innerText = textContents[currentIndex].description;
 });
-
-function toggleNav() {
-    var sideNav = document.querySelector(".side-nav");
-    sideNav.classList.toggle("show-links");
-}

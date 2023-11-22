@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            background-image: url('assets/img/login-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* make image fit on smaller screen sizes */
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/MainPage.css">
     <link rel="stylesheet" href="assets/css/navBar.css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-    rel="stylesheet"
-  />
     <title>Document</title>
 </head>
 <body>
@@ -186,30 +189,23 @@
                 />
             </svg>
               <span class="link-text">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-</header>
-    <section class="slide">
-        <div class="img-list" id="img-list">
-            <img src="assets/img/login-bg.jpg" width="100%" alt="">
-            <img src="assets/img/Intro-bg.jpg" width="100%" alt="">
-            <img src="assets/img/slide.jpg" width="100%" alt="">
-        </div>
-        <div class="content">
-            <div class="text-content">
-                <h2></h2>
-                <p></p>
-            </div>
-        </div>
-        <div class="btn-section">
-            <div class="img-btn" onclick="slideImg(0)"></div>
-            <div class="img-btn" onclick="slideImg(1)"></div>
-            <div class="img-btn" onclick="slideImg(2)"></div>
-        </div>
-    </section>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header> 
+  <table>
+    <thead>
+      <tr>
+        <th>Evaluator</th>
+        <th>Trainee Name</th>
+        <th>Feedback</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </body>
-<script src="MainPage.js"></script>
 <script src="Navigator.js"></script>
+<script src="feedback.js"></script>
 </html>

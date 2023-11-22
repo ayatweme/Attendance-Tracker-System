@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body{
+            background-image: url('assets/img/login-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* make image fit on smaller screen sizes */
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/MainPage.css">
     <link rel="stylesheet" href="assets/css/navBar.css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
-    rel="stylesheet"
-  />
+    <link rel="stylesheet" href="assets/css/Profile.css">
     <title>Document</title>
 </head>
 <body>
@@ -191,25 +195,52 @@
         </ul>
       </nav>
 </header>
-    <section class="slide">
-        <div class="img-list" id="img-list">
-            <img src="assets/img/login-bg.jpg" width="100%" alt="">
-            <img src="assets/img/Intro-bg.jpg" width="100%" alt="">
-            <img src="assets/img/slide.jpg" width="100%" alt="">
+<div class="container">
+  <div class="card-container">
+    <div id="profileCard">
+        <div class="row1">
+            <img id="profileImage" alt="Profile Image" src="assets\img/avatar.jpg">    
         </div>
-        <div class="content">
-            <div class="text-content">
-                <h2></h2>
-                <p></p>
+        <div class="row2">
+            <p><strong>First Name:</strong> <span id="profileFirstName"></span></p>
+            <p><strong>Last Name:</strong> <span id="profileLastName"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Password:</strong> <span id="profilePassword"></span></p>
+            <button id="editButton" onclick="showEditCard()">Edit User</button>
+        </div>
+    </div>
+    <div id="editCard">
+        <h2>Edit User</h2>
+        <div class="row1">
+            <img id="profileImage2" alt="Profile Image" src="assets\img\default-profile-image.jpg">    
+        </div>
+        <form id="editForm">
+            <div class="FormGroup">
+                <input type="text" id="editFirstName" name="editName" placeholder="First Name" required>
             </div>
-        </div>
-        <div class="btn-section">
-            <div class="img-btn" onclick="slideImg(0)"></div>
-            <div class="img-btn" onclick="slideImg(1)"></div>
-            <div class="img-btn" onclick="slideImg(2)"></div>
-        </div>
-    </section>
+            
+            <div class="FormGroup">
+                <input type="text" id="editLastName" name="editName" placeholder="Last Name" required>
+            </div>
+            <div class="FormGroup">
+                <input type="email" id="editEmail" name="editEmail" placeholder="Email" required>
+            </div>
+            <div class="FormGroup">
+                <input type="password" id="editPassword" name="editPassword" placeholder="Password" required>
+            </div>
+            <div class="FormGroup">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+          </div>
+            <div class="FormGroup">
+                <button type="button" onclick="saveChanges()">Save Changes</button>
+                <button type="button" onclick="hideEditCard()">Cancel</button>
+            </div> 
+        </form>
+    </div>
+  </div>
+</div>
 </body>
-<script src="MainPage.js"></script>
 <script src="Navigator.js"></script>
+<script src="Profile.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
