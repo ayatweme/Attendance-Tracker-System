@@ -1,5 +1,5 @@
-var authEmail = "admin@admin.com";
-var authPassword = "adminA1@";
+// var authEmail = "admin@admin.com";
+// var authPassword = "adminA1@";
 
 document.getElementById('passwordLogo').addEventListener('click', function () {
   const passwordField = document.getElementById("passwordField");
