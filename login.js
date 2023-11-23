@@ -26,12 +26,13 @@ function handleLogin(event, location) {
   const trainers = storedTrainers ? JSON.parse(storedTrainers) : [];
 
   // Define predefined authentication credentials
-  const authEmail = "admin@admin.com";
-  const authPassword = "adminA1@";
+  const Admin = JSON.parse(localStorage.getItem('Admin'));
+  const authEmail = Admin.email;
+  const authPassword = Admin.password;
 
   // Check if the entered credentials match predefined authentication credentials
   if (email === authEmail && password === authPassword) {
-    sessionStorage.setItem(email);
+    sessionStorage.setItem('validUser',JSON.stringify(Admin));
     navigateWithTimeout(location);
   } else {
     // Check if there is a user with matching credentials
