@@ -1,5 +1,3 @@
-// var authEmail = "admin@admin.com";
-// var authPassword = "adminA1@";
 
 document.getElementById('passwordLogo').addEventListener('click', function () {
   const passwordField = document.getElementById("passwordField");
@@ -19,40 +17,45 @@ document.getElementById('passwordLogo').addEventListener('click', function () {
 function handleLogin(event, location) {
   event.preventDefault(); // Prevent default form submission
   console.log('Navigating to:', location);
-  const body = document.body;
-  body.classList.add('fade-out');
-  var email=document.getElementById("emailField").value;
-  var password=document.getElementById("passwordField").value;
-  var l=localStorage.getItem("trainers");
-  var trainers=JSON.parse(l);
-  //var emaill=trainers[1].email for test
-  //var passwordd=trainers[1].passwordfor test
 
-  var authEmail = "admin@admin.com";
-  var authPassword = "adminA1@";
-  var validUser = trainers.find(user => user.email === email && user.password === password);
+  const email = document.getElementById("emailField").value;
+  const password = document.getElementById("passwordField").value;
 
+  // Retrieve trainers from local storage
+  const storedTrainers = localStorage.getItem("trainers");
+  const trainers = storedTrainers ? JSON.parse(storedTrainers) : [];
 
-  if(email===authEmail && password===authPassword){
+  // Define predefined authentication credentials
+  const authEmail = "admin@admin.com";
+  const authPassword = "adminA1@";
+
+  // Check if the entered credentials match predefined authentication credentials
+  if (email === authEmail && password === authPassword) {
+    navigateWithTimeout(location);
+  } else {
+    // Check if there is a user with matching credentials
+    const validUser = trainers.find(user => user.email === email && user.password === password);
+
+    if (validUser) {
+      navigateWithTimeout(location);
+    } else {
+      alert("This account is not registered yet");
+      window.location.href = "login.html";
+    }
+  }
+}
+
+// Function to navigate to a specified location with a timeout
+function navigateWithTimeout(location) {
   setTimeout(() => {
     console.log('Timeout reached. Navigating now.');
     window.location.href = location + ".html";
   }, 400);
 }
-else if (validUser) {
-  setTimeout(() => {
-    console.log('Timeout reached. Navigating now.');
-    window.location.href = location + ".html";
-  }, 400);
-  
-} 
-else{
-  alert("this account not registerd yet");
-  window.location.href = "login.html";
-}
 
 
-}
+
+
 function validatePassword() {
   var pass = document.getElementById("passwordField").value;
 

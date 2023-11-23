@@ -1,8 +1,8 @@
 function saveToLocalStorage() {
-    const trainer = {
+    const Admin = {
       name: 'admin',
       email: 'admin@admin.com',
       password: 'adminA1@'
     };
-    localStorage.setItem('trainers', JSON.stringify(trainer));
+    localStorage.setItem('Admin', JSON.stringify(Admin));
   }
