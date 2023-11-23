@@ -4,7 +4,5 @@ function saveToLocalStorage() {
       email: 'admin@admin.com',
       password: 'adminA1@'
     };
-  
-    trainers.push(trainer);
-    localStorage.setItem('trainers', JSON.stringify(trainers));
+    localStorage.setItem('trainers', JSON.stringify(trainer));
   }
