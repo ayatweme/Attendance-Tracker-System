@@ -5,7 +5,7 @@ function saveToLocalStorage() {
       password: 'adminA1@'
     };
   
-    const trainers = JSON.parse(localStorage.getItem('trainers'));
+    const trainers = JSON.parse(localStorage.getItem('trainers'))|| [];
     trainers.push(trainer);
     localStorage.setItem('trainers', JSON.stringify(trainers));
   }
