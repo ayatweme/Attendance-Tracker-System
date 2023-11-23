@@ -1,202 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <style>
-        body{
-            background-image: url('assets/img/login-bg.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* make image fit on smaller screen sizes */
-        }
-    </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/navBar.css">
-    <link rel="stylesheet" href="assets/css/trainers.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <title>Document</title>
+  <style>
+    body {
+      background-image: url('assets/img/login-bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+   
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-nav {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-item {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .nav-item:hover::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+
+    .link-text {
+      margin-left: 5px;
+    }
+
+    .container {
+      margin: 50px auto;
+      max-width: 800px;
+      /* background-color: #fff; */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #trainersTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    #trainersTable th,
+    #trainersTable td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    #trainersTable th {
+      background-color: #536cd0;
+      color: #fff;
+    }
+
+    #toggleFormBtn,
+    #createTrainerBtn {
+      background-color: #536cd0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      float:right;
+      margin-bottom:5px;
+    }
+
+    #toggleFormBtn:hover,
+    #createTrainerBtn:hover {
+      background-color: #555;
+    }
+
+    #trainerForm {
+      display: none;
+      padding-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #pageTitle {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/navBar.css">
+  <link rel="stylesheet" href="assets/css/trainers.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+  <title>Your Page Title</title>
 </head>
+
 <body>
   <header>
     <nav class="navbar" style="z-index: 1000; /* Higher z-index to ensure it's on top */">
-        <ul class="navbar-nav">
-          <li class="logo">
-            <a class="nav-link" onclick="Navigate('profile')">
-              <span class="link-text logo-text">Ahmad</span>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fad"
-                data-icon="angle-double-right"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
-              >
-                <g class="fa-group">
-                  <path
-                    fill="currentColor"
-                    d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
-                    class="fa-third"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
-                    class="fa-forth"
-                  ></path>
-                </g>
-              </svg>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a class="nav-link" onclick="Navigate('MainPage')">
-                <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fad"
-                data-icon="home"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512"
-                class="svg-inline--fa fa-home fa-w-18 fa-9x"
-              >
-                <g class="fa-group">
-                  <path
-                    fill="currentColor"
-                    d="M571.8,265.7,497.5,191.4V64a16,16,0,0,0-16-16H368a16,16,0,0,0-16,16V120.5L308.2,73.1A16.06,16.06,0,0,0,287.9,64H192.1a16.06,16.06,0,0,0-20.3,9.1L48.3,265.7a16,16,0,0,0-2.3,17.5l16,32A16,16,0,0,0,72,320H96V496a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V368h96V496a16,16,0,0,0,16,16h112a16,16,0,0,0,16-16V320h24a16,16,0,0,0,14.3-8.8l16-32A16,16,0,0,0,571.8,265.7ZM464,480H368V336a16,16,0,0,0-16-16H224a16,16,0,0,0-16,16V480H112V240.8L288,97.9,464,240.8ZM312,480V352h64V480Z"
-                    class="fa-secondary"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M312,352h64V480h-64Z"
-                    class="fa-primary"
-                  ></path>
-                </g>
-              </svg>
-              <span class="link-text">Home</span>
-            </a>
-          </li>
-    
-          <li class="nav-item">
-            <a class="nav-link" onclick="Navigate('trainee')">
-                <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fad"
-                data-icon="user"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 512"
-                class="svg-inline--fa fa-user fa-w-20 fa-9x"
-              >
-                <g class="fa-group">
-                  <path
-                    fill="currentColor"
-                    d="M320 304c88.4 0 160-71.6 160-160S408.4-16 320-16 160 55.6 160 144s71.6 160 160 160zm0 64c-49.5 0-94.2 19.4-127.5 50.8C81.3 432.8 45.3 480 32 480c-6.7 0-12 5.3-12 12s5.3 12 12 12h576c6.7 0 12-5.3 12-12s-5.3-12-12-12c-13.3 0-49.3-47.2-160.5-61.2C414.2 387.4 369.5 368 320 368z"
-                    class="fa-secondary"
-                  ></path>
-                </g>
-              </svg>                     
-              <span class="link-text">Trainees</span>
-            </a>
-          </li>
-            
-          <li class="nav-item">
-            <a class="nav-link" onclick="Navigate('trainers')">
-                <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fad"
-                data-icon="user"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 512"
-                class="svg-inline--fa fa-user fa-w-20 fa-9x"
-              >
-                <g class="fa-group">
-                  <path
-                    fill="currentColor"
-                    d="M320 304c88.4 0 160-71.6 160-160S408.4-16 320-16 160 55.6 160 144s71.6 160 160 160zm0 64c-49.5 0-94.2 19.4-127.5 50.8C81.3 432.8 45.3 480 32 480c-6.7 0-12 5.3-12 12s5.3 12 12 12h576c6.7 0 12-5.3 12-12s-5.3-12-12-12c-13.3 0-49.3-47.2-160.5-61.2C414.2 387.4 369.5 368 320 368z"
-                    class="fa-secondary"
-                  ></path>
-                </g>
-              </svg>
-                 
-              <span class="link-text">Trainers</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" onclick="Navigate('feedback')">
-                <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="file-alt"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                class="svg-inline--fa fa-file-alt fa-w-14 fa-5x"
-              >
-                <path
-                  fill="currentColor"
-                  d="M320 0H32C14.33 0 0 14.33 0 32v448c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32V128L320 0zm80 464c0 8.82-7.18 16-16 16H64c-8.82 0-16-7.18-16-16V48c0-8.82 7.18-16 16-16h224v128c0 17.67 14.33 32 32 32h128v272zm-96-184v40c0 13.25-10.75 24-24 24h-64v64c0 13.25-10.75 24-24 24h-64c-13.25 0-24-10.75-24-24v-64h-64c-13.25 0-24-10.75-24-24v-40c0-13.25 10.75-24 24-24h64v-64c0-13.25 10.75-24 24-24h64c13.25 0 24 10.75 24 24v64h64c13.25 0 24 10.75 24 24z"
-                  class="fa-secondary"
-                ></path>
-              </svg>                  
-              <span class="link-text">Feedback</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" onclick="Navigate('profile')">
-                <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="user"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-                class="svg-inline--fa fa-user fa-w-14 fa-5x"
-              >
-                <path
-                  fill="currentColor"
-                  d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 32c-61.8 0-117.7 27.7-155.6 71.6C57.8 379.4 45.4 394.1 32 416c-4.4 6.5-6.7 14.2-6.7 22.2 0 26.5 42.6 48 96 48h224c53.4 0 96-21.5 96-48 0-8-2.3-15.7-6.7-22.2-13.4-19.9-25.8-34.6-36.4-56.4C341.7 315.7 285.8 288 224 288z"
-                  class="fa-secondary"
-                ></path>
-              </svg>
-              <span class="link-text">Profile</span>
-            </a>
-          </li>
-    
-          <li class="nav-item" id="themeButton">
-            <a class="nav-link" onclick="Navigate('login')">
-              <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="file-alt"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              width="512"
-              height="512"
-              viewBox="0 0 512 512"
-            >
-              <path
-                fill="currentColor"
-                d="M200.971 382.061l32.785 33.941c7.81 7.811 20.475 7.811 28.285 0l120.434-124.541c7.81-7.81 7.81-20.475 0-28.286L261.04 95.013c-7.811-7.81-20.475-7.81-28.286 0l-29.27 30.24c-7.81 7.81-7.81 20.475 0 28.286l84.992 87.782H24c-13.255 0-24 10.745-24 24s10.745 24 24 24h264.485l-85.177 87.838c-7.811 7.811-7.811 20.475 0 28.286z"
-                class="fa-third"
-                />
+      <ul class="navbar-nav">
+        <li class="logo">
+          <a class="nav-link" onclick="Navigate('profile')">
+            <span class="link-text logo-text">Ahmad</span>
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="angle-double-right" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+              class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x">
+              <g class="fa-group">
+                <path fill="currentColor"
+                  d="M224 273L88.37 409a23.78 23.78 0 0 1-33.8 0L32 386.36a23.94 23.94 0 0 1 0-33.89l96.13-96.37L32 159.73a23.94 23.94 0 0 1 0-33.89l22.44-22.79a23.78 23.78 0 0 1 33.8 0L223.88 239a23.94 23.94 0 0 1 .1 34z"
+                  class="fa-third"></path>
+                <path fill="currentColor"
+                  d="M415.89 273L280.34 409a23.77 23.77 0 0 1-33.79 0L224 386.26a23.94 23.94 0 0 1 0-33.89L320.11 256l-96-96.47a23.94 23.94 0 0 1 0-33.89l22.52-22.59a23.77 23.77 0 0 1 33.79 0L416 239a24 24 0 0 1-.11 34z"
+                  class="fa-forth"></path>
+              </g>
             </svg>
-              <span class="link-text">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="Navigate('MainPage')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="home" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-home fa-w-18 fa-9x">
+              <g class="fa-group">
+                <path fill="currentColor"
+                  d="M571.8,265.7,497.5,191.4V64a16,16,0,0,0-16-16H368a16,16,0,0,0-16,16V120.5L308.2,73.1A16.06,16.06,0,0,0,287.9,64H192.1a16.06,16.06,0,0,0-20.3,9.1L48.3,265.7a16,16,0,0,0-2.3,17.5l16,32A16,16,0,0,0,72,320H96V496a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V368h96V496a16,16,0,0,0,16,16h112a16,16,0,0,0,16-16V320h24a16,16,0,0,0,14.3-8.8l16-32A16,16,0,0,0,571.8,265.7ZM464,480H368V336a16,16,0,0,0-16-16H224a16,16,0,0,0-16,16V480H112V240.8L288,97.9,464,240.8ZM312,480V352h64V480Z"
+                  class="fa-secondary"></path>
+                <path fill="currentColor" d="M312,352h64V480h-64Z" class="fa-primary"></path>
+              </g>
+            </svg>
+            <span class="link-text">Home</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="Navigate('trainee')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-user fa-w-20 fa-9x">
+              <g class="fa-group">
+                <path fill="currentColor"
+                  d="M320 304c88.4 0 160-71.6 160-160S408.4-16 320-16 160 55.6 160 144s71.6 160 160 160zm0 64c-49.5 0-94.2 19.4-127.5 50.8C81.3 432.8 45.3 480 32 480c-6.7 0-12 5.3-12 12s5.3 12 12 12h576c6.7 0 12-5.3 12-12s-5.3-12-12-12c-13.3 0-49.3-47.2-160.5-61.2C414.2 387.4 369.5 368 320 368z"
+                  class="fa-secondary"></path>
+              </g>
+            </svg>
+            <span class="link-text">Trainees</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="Navigate('trainers')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-user fa-w-20 fa-9x">
+              <g class="fa-group">
+                <path fill="currentColor"
+                  d="M320 304c88.4 0 160-71.6 160-160S408.4-16 320-16 160 55.6 160 144s71.6 160 160 160zm0 64c-49.5 0-94.2 19.4-127.5 50.8C81.3 432.8 45.3 480 32 480c-6.7 0-12 5.3-12 12s5.3 12 12 12h576c6.7 0 12-5.3 12-12s-5.3-12-12-12c-13.3 0-49.3-47.2-160.5-61.2C414.2 387.4 369.5 368 320 368z"
+                  class="fa-secondary"></path>
+              </g>
+            </svg>
+
+            <span class="link-text">Trainers</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="Navigate('feedback')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-alt" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-file-alt fa-w-14 fa-5x">
+              <path fill="currentColor"
+                d="M320 0H32C14.33 0 0 14.33 0 32v448c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32V128L320 0zm80 464c0 8.82-7.18 16-16 16H64c-8.82 0-16-7.18-16-16V48c0-8.82 7.18-16 16-16h224v128c0 17.67 14.33 32 32 32h128v272zm-96-184v40c0 13.25-10.75 24-24 24h-64v64c0 13.25-10.75 24-24 24h-64c-13.25 0-24-10.75-24-24v-64h-64c-13.25 0-24-10.75-24-24v-40c0-13.25 10.75-24 24-24h64v-64c0-13.25 10.75-24 24-24h64c13.25 0 24 10.75 24 24v64h64c13.25 0 24 10.75 24 24z"
+                class="fa-secondary"></path>
+            </svg>
+            <span class="link-text">Feedback</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" onclick="Navigate('profile')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user fa-w-14 fa-5x">
+              <path fill="currentColor"
+                d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm0 32c-61.8 0-117.7 27.7-155.6 71.6C57.8 379.4 45.4 394.1 32 416c-4.4 6.5-6.7 14.2-6.7 22.2 0 26.5 42.6 48 96 48h224c53.4 0 96-21.5 96-48 0-8-2.3-15.7-6.7-22.2-13.4-19.9-25.8-34.6-36.4-56.4C341.7 315.7 285.8 288 224 288z"
+                class="fa-secondary"></path>
+            </svg>
+            <span class="link-text">Profile</span>
+          </a>
+        </li>
+
+        <li class="nav-item" id="themeButton">
+          <a class="nav-link" onclick="Navigate('login')">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-alt" role="img"
+              xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+              <path fill="currentColor"
+                d="M200.971 382.061l32.785 33.941c7.81 7.811 20.475 7.811 28.285 0l120.434-124.541c7.81-7.81 7.81-20.475 0-28.286L261.04 95.013c-7.811-7.81-20.475-7.81-28.286 0l-29.27 30.24c-7.81 7.81-7.81 20.475 0 28.286l84.992 87.782H24c-13.255 0-24 10.745-24 24s10.745 24 24 24h264.485l-85.177 87.838c-7.811 7.811-7.811 20.475 0 28.286z"
+                class="fa-third" />
+            </svg>
+            <span class="link-text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
   <div class="container">
+    <h1 id="pageTitle">Trainer List</h1>
+
+    <button id="toggleFormBtn" class="btn">Add Trainer</button>
+    <div id="trainerForm" style="display: none;">
+      <input type="text" id="nameInput" placeholder="Name">
+      <input type="email" id="emailInput" placeholder="Email">
+      <input type="password" id="passwordInput" placeholder="Password">
+      <br><br>
+      <button id="createTrainerBtn" class="btn">Create</button>
+    </div>
+    
     <table id="trainersTable">
       <thead>
         <tr>
@@ -210,17 +249,11 @@
       </tbody>
     </table>
     <br><br>
-    <button id="toggleFormBtn" class="btn">Add Trainer</button>
-    <div id="trainerForm" style="display: none;padding-top: 20px;">
-      <input type="text" id="nameInput" placeholder="Name">
-      <input type="email" id="emailInput" placeholder="Email">
-      <input type="password" id="passwordInput" placeholder="Password">
-      <br><br>
-      <button id="createTrainerBtn" class="btn">Create</button>
-    </div>
+   
   </div>
-  
+
 </body>
 <script src="Navigator.js"></script>
 <script src="trainers.js"></script>
+
 </html>
