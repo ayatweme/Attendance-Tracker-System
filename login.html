@@ -20,13 +20,13 @@
                 <p id="emailError"></p> 
                 <!-- Email error message placeholder -->
                 <div class="login__box">
-                    <input type="password" placeholder="Password" class="login__input" id="passwordField">
+                    <input type="password" placeholder="Password" class="login__input" id="passwordField" oninput="validatePassword()" >
                     <i class="ri-eye-off-line" id="passwordLogo"></i>
                 </div>
                 <p id="passwordError"></p> 
                 <!-- Password error message placeholder -->
             </div>
-            <button class="login__button" onclick="handleLogin(event, 'MainPage')">Login</button>
+            <button class="login__button" onclick="handleLogin(event, 'MainPage')" >Login</button>
         </form>     
       </div>
    </body>
