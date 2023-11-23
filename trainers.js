@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
     function populateTable() {
         const trainers = JSON.parse(localStorage.getItem('trainers')) || [];
-        alert(JSON.stringify(trainers));
         tableBody.innerHTML = '';
         trainers.forEach(trainer => {
           const newRow = tableBody.insertRow();

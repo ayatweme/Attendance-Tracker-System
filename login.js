@@ -31,12 +31,14 @@ function handleLogin(event, location) {
 
   // Check if the entered credentials match predefined authentication credentials
   if (email === authEmail && password === authPassword) {
+    sessionStorage.setItem(email);
     navigateWithTimeout(location);
   } else {
     // Check if there is a user with matching credentials
     const validUser = trainers.find(user => user.email === email && user.password === password);
 
     if (validUser) {
+      sessionStorage.setItem("validUser",JSON.stringify(validUser));
       navigateWithTimeout(location);
     } else {
       alert("This account is not registered yet");
