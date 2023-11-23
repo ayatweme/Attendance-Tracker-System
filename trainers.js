@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
     createTrainerBtn.addEventListener('click', function() {
+      const role = 2;
       const name = document.getElementById('nameInput').value.trim();
       const email = document.getElementById('emailInput').value.trim();
       const password = document.getElementById('passwordInput').value.trim();
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert(errors.join('\n'));
       } else {
         // Save data to local storage
-        const trainer = { name, email, password };
+        const trainer = { role, name, email, password };
         const trainers = JSON.parse(localStorage.getItem('trainers')) || [];
         trainers.push(trainer);
         localStorage.setItem('trainers', JSON.stringify(trainers));
