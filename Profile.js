@@ -17,8 +17,7 @@ function showEditCard() {
     document.getElementById('editCard').style.display = 'block';
 
     // Populate form fields with existing user data
-    document.getElementById('editFirstName').value = userData.FirstName || '';
-    document.getElementById('editLastName').value = userData.LastName || '';
+    document.getElementById('editName').value = userData.name || '';
     document.getElementById('editEmail').value = userData.email || '';
     document.getElementById('editPassword').value = userData.password || '';
     document.getElementById('profileImage2').src = userData.profileImage || '';
@@ -32,18 +31,16 @@ function hideEditCard() {
 
 function saveChanges() {
     // Update userData with edited information
-    userData.FirstName = document.getElementById('editFirstName').value;
-    userData.LastName = document.getElementById('editLastName').value;
+    userData.name = document.getElementById('editName').value;
     userData.email = document.getElementById('editEmail').value;
     userData.password = document.getElementById('editPassword').value;
 
-    if (validateName(userData.FirstName) && validateName(userData.LastName) && isValidEmail(userData.email) && isValidPassword(userData.password)) {
+    if (validateName(userData.name) && isValidEmail(userData.email) && isValidPassword(userData.password)) {
         // Save updated userData to local storage
         localStorage.setItem('userData', JSON.stringify(userData));
                     // Update profile card with edited information
     
-        document.getElementById('profileFirstName').innerText = userData.FirstName || 'N/A';
-        document.getElementById('profileLastName').innerText = userData.LastName || 'N/A';
+        document.getElementById('profileName').innerText = userData.name || 'N/A';
         document.getElementById('profileEmail').innerText = userData.email || 'N/A';
         document.getElementById('profilePassword').innerText = userData.password || 'N/A';
 
