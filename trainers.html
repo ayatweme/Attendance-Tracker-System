@@ -3,6 +3,7 @@
 
 <head>
   <style>
+    
     body {
       background-image: url('assets/img/login-bg.jpg');
       background-size: cover;
@@ -125,7 +126,7 @@
     <nav class="navbar" style="z-index: 1000; /* Higher z-index to ensure it's on top */">
       <ul class="navbar-nav">
         <li class="logo">
-          <a class="nav-link" onclick="Navigafte('profile')">
+          <a class="nav-link" onclick="Navigate('profile')">
             <span class="link-text logo-text" id="NameInNavBar">Ahmad</span>
             <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="angle-double-right" role="img"
               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
@@ -241,8 +242,8 @@
         <tr>
           <th>Trainer Name</th>
           <th>Trainer Email</th>
-          <th>Trainer Password</th>
-          <th>Delete</th>
+          <th id="TrainerPassword">Trainer Password</th>
+          <th id="TrainerDelete">Delete</th>
         </tr>
       </thead>
       <tbody>

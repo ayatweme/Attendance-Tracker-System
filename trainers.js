@@ -1,3 +1,4 @@
+permission();
 document.addEventListener('DOMContentLoaded', function() {
     const toggleFormBtn = document.getElementById('toggleFormBtn');
     const trainerForm = document.getElementById('trainerForm');
@@ -15,25 +16,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   
     function populateTable() {
+        const validUser = JSON.parse(sessionStorage.getItem('validUser'));
         const trainers = JSON.parse(localStorage.getItem('trainers')) || [];
         tableBody.innerHTML = '';
         trainers.forEach(trainer => {
           const newRow = tableBody.insertRow();
           const nameCell = newRow.insertCell();
           const emailCell = newRow.insertCell();
-          const passwordCell = newRow.insertCell();
-          const deleteCell = newRow.insertCell();
-      
+          let passwordCell ;
+          let deleteCell ;
           nameCell.textContent = trainer.name;
           emailCell.textContent = trainer.email;
-          passwordCell.textContent = trainer.password;
+          if (validUser.role ==1) {
+             passwordCell = newRow.insertCell();
+             deleteCell = newRow.insertCell();
+             passwordCell.textContent = trainer.password;
+             const deleteIcon = document.createElement("i");
+              deleteIcon.classList.add('fas', 'fa-trash', 'delete-icon');
+              deleteIcon.style.color = '#2980b9';
+              deleteIcon.style.cursor = 'pointer';
+          
+              deleteCell.appendChild(deleteIcon);
+          }
+          
       
-          const deleteIcon = document.createElement("i");
-          deleteIcon.classList.add('fas', 'fa-trash', 'delete-icon');
-          deleteIcon.style.color = '#2980b9';
-          deleteIcon.style.cursor = 'pointer';
+          
+          
       
-          deleteCell.appendChild(deleteIcon);
+          
         });
       }
       
@@ -88,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('trainers', JSON.stringify(trainers));
   
         // Update table
+
         populateTable();
         resetForm();
       }
@@ -100,4 +111,18 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('passwordInput').value = '';
     }
   });
+
+
+  function permission() {
+    let TrainerPassword = document.getElementById('TrainerPassword');
+    let TrainerDelete = document.getElementById('TrainerDelete');
+    let toggleFormBtn = document.getElementById('toggleFormBtn');
+
+    const validUser = JSON.parse(sessionStorage.getItem('validUser'));
+    if (validUser.role == 2) {
+      TrainerPassword.style.display = "none";
+      TrainerDelete.style.display = "none";
+      toggleFormBtn.style.display = "none";
+    }
+  }
   
