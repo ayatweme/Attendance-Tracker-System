@@ -1,7 +1,7 @@
 const userData = JSON.parse(sessionStorage.getItem('validUser'));
 if (userData) {
     // Display user data in the profile card
-    document.getElementById('profileImage').src = userData.profileImage || 'assets\img\default-profile-image.jpg';
+    document.getElementById('profileImage').src = userData.profileImage || 'assets/img/default-profile-image.jpg';
     document.getElementById('profileName').innerText = userData.name || 'N/A';
     document.getElementById('profileEmail').innerText = userData.email || 'N/A';
     document.getElementById('profilePassword').innerText = userData.password || 'N/A';
@@ -18,7 +18,7 @@ function showEditCard() {
     document.getElementById('editName').value = userData.name || '';
     document.getElementById('editEmail').value = userData.email || '';
     document.getElementById('editPassword').value = userData.password || '';
-    document.getElementById('profileImage2').src = userData.profileImage || '';
+    document.getElementById('profileImage2').src = userData.profileImage || 'assets/img/default-profile-image.jpg';
     document.getElementById('editImage').value = userData.profileImage || '';
 }
 
@@ -58,7 +58,7 @@ function saveChanges() {
     
         document.getElementById('profileEmail').innerText = userData.email || 'N/A';
         document.getElementById('profilePassword').innerText = userData.password || 'N/A';
-        document.getElementById('profileImage').src = userData.profileImage || 'N/A';
+        document.getElementById('profileImage').src = userData.profileImage || 'assets/img/default-profile-image.jpg';
 
         document.getElementById('editForm').reset();
 

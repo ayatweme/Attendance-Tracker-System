@@ -213,3 +213,14 @@ function refreshTable() {
     });
 }
 refreshTable();
+function permissions() {
+    const validUser = JSON.parse(sessionStorage.getItem('validUser'));
+    if (validUser && validUser.role === 1) {
+        let btns = document.getElementsByClassName('btn');
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].style.display = "none";
+        }
+    }
+}
+
+permissions();
