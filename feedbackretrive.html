@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Feedback Details</h1>
+    </header>
+
+    <div class="container">
+        <h2>Student Feedback</h2>
+
+        <div id="feedbackDetails"></div>
+
+        <a href="index.html">Back to Feedback</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve feedback data from local storage
+            var feedbackData = JSON.parse(localStorage.getItem("feedbackData"));
+
+            if (feedbackData) {
+                // Display feedback details
+                displayFeedbackDetails(feedbackData);
+            } else {
+                // Handle case where no feedback data is found
+                document.getElementById("feedbackDetails").innerHTML = "<p>No feedback data found.</p>";
+            }
+        });
+
+        function displayFeedbackDetails(feedbackData) {
+            var feedbackDetailsContainer = document.getElementById("feedbackDetails");
+
+            // Display feedback details
+            feedbackDetailsContainer.innerHTML += "<p><strong>Student Name:</strong> " + feedbackData.studentName + "</p>";
+            feedbackDetailsContainer.innerHTML += "<p><strong>Course:</strong> " + feedbackData.course + "</p>";
+            feedbackDetailsContainer.innerHTML += "<p><strong>Feedback:</strong> " + feedbackData.feedback + "</p>";
+
+            // Add more details as needed
+        }
+    </script>
+
+</body>
+</html>
